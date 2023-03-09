@@ -6,27 +6,29 @@ const ListItems = props =>{
     const {items, deleteTeacher} = props
     const {name} = items
 
-    const onDeleteTeacher = ()=>{
+    const onDeleteTeacher = async ()=>{
         deleteTeacher(items.id)
         const deleteAPIUrl = `http://localhost:1337/api/teachers/${items.id}`
         const options = {
             method:"DELETE"
         }
-        fetch(deleteAPIUrl, options)
-        .then((res) =>res.json())
-        .then (data=> console.log(data))
-        .catch(()=>{})
+        const response = await fetch(deleteAPIUrl, options)
+        console.log(response)
+        alert("Teacher deleted successfully")
+        // .then((res) =>res.json())
+        // .then (data=> console.log(data))
+        // .catch(()=>{}) 
     }
 
     return(
-        <li className='list-items'>
-            <div>
+        <li className='list-items w-100 mt-3'>
+            <div  className='w-25 ms-5'>
                 <h4>{name}</h4>
             </div>
-            <div>
-                <button>Edit</button>
-                <button>View</button>
-                <button onClick={onDeleteTeacher}>delete</button>
+            <div className='w-25'>
+                <button className='btn btn-primary me-2'>Edit</button>
+                <button className='btn btn-success me-2 '>View</button>
+                <button className='btn btn-danger me-2' onClick={onDeleteTeacher}>delete</button>
             </div>
         </li>
     )

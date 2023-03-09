@@ -48,11 +48,11 @@
 }
 .list-style{
   list-style-type: none;
-  width: 70%;
+  width:100%;
 }
 .list-items{
-  width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 
 }
